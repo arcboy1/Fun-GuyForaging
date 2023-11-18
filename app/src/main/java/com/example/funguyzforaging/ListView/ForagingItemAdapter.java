@@ -21,18 +21,12 @@ public class ForagingItemAdapter extends ArrayAdapter<ForagingItem> {
     }
 
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        ForagingItem foragingItem = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_view, parent, false);
-        }
-
-        TextView textView = convertView.findViewById(R.id.name);
-
-        // Get the current item
-        ForagingItem foragingItem = getItem(position);
-
-        // Set the text to display item name along with its position
-        if (foragingItem != null) {
-            textView.setText((position + 1) + ". " + foragingItem.getName());
+            TextView textView = convertView.findViewById(R.id.name);
+            // Set the text to display item name along with its position
+            textView.setText((position+1) + ". " + foragingItem.getName());
         }
 
         return convertView;
