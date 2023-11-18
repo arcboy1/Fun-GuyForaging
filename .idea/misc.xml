@@ -16,6 +16,8 @@
         <entry key="app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_mushroom_outline.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.201" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_view.xml" value="0.20212765957446807" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.41025641025641024" />
         <entry key="app/src/main/res/xml/root_preferences.xml" value="0.20263424518743667" />
       </map>
@@ -26,5 +28,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.20263424518743667" />
+      </ProjectState>
+    </option>
   </component>
 </project>
