@@ -78,8 +78,18 @@ public class MushroomIdentifierFragment extends Fragment {
 
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
-
-                    tab.setText("Tab " + (position + 1));
+                    // Set tab titles
+                    switch (position) {
+                        case 0:
+                            tab.setText("Edible");
+                            break;
+                        case 1:
+                            tab.setText("Magic");
+                            break;
+                        case 2:
+                            tab.setText("Poison");
+                            break;
+                    }
                 }
         ).attach();
 

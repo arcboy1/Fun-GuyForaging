@@ -98,7 +98,7 @@ public class EdibleMushFragment extends Fragment {
 
         MushroomDetailFragment detailFragment = MushroomDetailFragment.newInstance(mushroom);
 
-        fragmentTransaction.replace(R.id.nav_host_fragment_content_main, detailFragment);
+        fragmentTransaction.replace(R.id.fragcontainer, detailFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
