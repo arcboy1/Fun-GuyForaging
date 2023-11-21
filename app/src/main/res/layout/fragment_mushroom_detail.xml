@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- fragment_mushroom_detail.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewDetail"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/nameTextViewDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewDetail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/descriptionTextViewDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameTextViewDetail"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/locationTextViewDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptionTextViewDetail"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp" />
+</RelativeLayout>

@@ -3,12 +3,21 @@ package com.example.funguyzforaging.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.funguyzforaging.DataClass.Mushroom;
 import com.example.funguyzforaging.R;
+import com.example.funguyzforaging.RecyclerView.MushroomAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +25,14 @@ import com.example.funguyzforaging.R;
  * create an instance of this fragment.
  */
 public class EdibleMushFragment extends Fragment {
+
+    private List<Mushroom> edibleMushrooms = new ArrayList<Mushroom>() {{
+        add(new Mushroom("Black Trumpet", R.drawable.blacktrumpet, "Delicious and golden", "Forest"));
+        add(new Mushroom("Bolete", R.drawable.bolete, "Spongy and earthy", "Woodland"));
+        add(new Mushroom("Chanterelles", R.drawable.chanterelles, "Commonly used in Asian cuisine", "Cultivated"));
+        // Add more edible mushrooms as needed
+    }};
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +77,29 @@ public class EdibleMushFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edible_mush, container, false);
+        View view = inflater.inflate(R.layout.fragment_edible_mush, container, false);
+
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewEdible);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        MushroomAdapter adapter = new MushroomAdapter(edibleMushrooms, mushroom -> {
+            // Handle item click (e.g., show enlarged image and details)
+            showMushroomDetails(mushroom);
+        });
+        recyclerView.setAdapter(adapter);
+
+        return view;
+    }
+
+    private void showMushroomDetails(Mushroom mushroom) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        MushroomDetailFragment detailFragment = MushroomDetailFragment.newInstance(mushroom);
+
+        fragmentTransaction.replace(R.id.nav_host_fragment_content_main, detailFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
