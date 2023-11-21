@@ -13,6 +13,19 @@
     <fragment
         android:id="@+id/nav_mushidentifier"
         android:name="com.example.funguyzforaging.Fragments.MushroomIdentifierFragment"
-        android:label="Mushroom Identifier" />
+        android:label="Mushroom Identifier" >
+        <action
+            android:id="@+id/action_nav_mushidentifier_to_mushroomDetailFragment"
+            app:destination="@id/nav_mushdetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_mushdetail"
+        android:name="com.example.funguyzforaging.Fragments.MushroomDetailFragment"
+        android:label="MushroomDetailFragment" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.funguyzforaging.MainActivity"
+        android:label="fragment_mushroom_identifier"
+        tools:layout="@layout/fragment_mushroom_identifier" />
 
 </navigation>

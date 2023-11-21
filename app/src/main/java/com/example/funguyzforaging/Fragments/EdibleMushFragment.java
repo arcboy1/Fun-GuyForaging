@@ -30,7 +30,12 @@ public class EdibleMushFragment extends Fragment {
         add(new Mushroom("Black Trumpet", R.drawable.blacktrumpet, "Delicious and golden", "Forest"));
         add(new Mushroom("Bolete", R.drawable.bolete, "Spongy and earthy", "Woodland"));
         add(new Mushroom("Chanterelles", R.drawable.chanterelles, "Commonly used in Asian cuisine", "Cultivated"));
-        // Add more edible mushrooms as needed
+        add(new Mushroom("Chicken of the Woods", R.drawable.chickenofthewoods, "Delicious and golden", "Forest"));
+        add(new Mushroom("Honey Cap", R.drawable.honeyfungi, "Spongy and earthy", "Woodland"));
+        add(new Mushroom("Lions Mane", R.drawable.lionsmane, "Commonly used in Asian cuisine", "Cultivated"));
+        add(new Mushroom("Oysters", R.drawable.oyster, "Delicious and golden", "Forest"));
+        add(new Mushroom("Puffball", R.drawable.puffball, "Spongy and earthy", "Woodland"));
+        add(new Mushroom("Shaggy mane", R.drawable.shaggymane, "Commonly used in Asian cuisine", "Cultivated"));
     }};
 
 
@@ -83,23 +88,20 @@ public class EdibleMushFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        MushroomAdapter adapter = new MushroomAdapter(edibleMushrooms, mushroom -> {
-            // Handle item click (e.g., show enlarged image and details)
-            showMushroomDetails(mushroom);
-        });
+        MushroomAdapter adapter = new MushroomAdapter(edibleMushrooms);
         recyclerView.setAdapter(adapter);
 
         return view;
     }
 
-    private void showMushroomDetails(Mushroom mushroom) {
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        MushroomDetailFragment detailFragment = MushroomDetailFragment.newInstance(mushroom);
-
-        fragmentTransaction.replace(R.id.fragcontainer, detailFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
+//    private void showMushroomDetails(Mushroom mushroom) {
+//        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//        MushroomDetailFragment detailFragment = MushroomDetailFragment.newInstance(mushroom);
+//
+//        fragmentTransaction.replace(R.id.fragcontainer, detailFragment);
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.commit();
+//    }
 }

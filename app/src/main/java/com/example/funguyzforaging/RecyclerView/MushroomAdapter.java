@@ -1,5 +1,6 @@
 package com.example.funguyzforaging.RecyclerView;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.funguyzforaging.DataClass.Mushroom;
@@ -18,15 +20,13 @@ import java.util.List;
 public class MushroomAdapter extends RecyclerView.Adapter<MushroomAdapter.MushroomViewHolder> {
 
     private List<Mushroom> mushrooms;
-    private OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void onItemClick(Mushroom mushroom);
     }
 
-    public MushroomAdapter(List<Mushroom> mushrooms, OnItemClickListener listener) {
+    public MushroomAdapter(List<Mushroom> mushrooms) {
         this.mushrooms = mushrooms;
-        this.listener = listener;
     }
 
     @NonNull
@@ -44,12 +44,6 @@ public class MushroomAdapter extends RecyclerView.Adapter<MushroomAdapter.Mushro
         holder.nameTextView.setText(mushroom.getName());
         holder.imageView.setImageResource(mushroom.getImage());
 
-        // Set click listener
-        holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(mushroom);
-            }
-        });
     }
 
     @Override
@@ -57,16 +51,33 @@ public class MushroomAdapter extends RecyclerView.Adapter<MushroomAdapter.Mushro
         return mushrooms.size();
     }
 
-    static class MushroomViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
-        TextView nameTextView;
+    class MushroomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        protected ImageView imageView;
+        protected TextView nameTextView;
 
-        MushroomViewHolder(View itemView) {
+
+        public MushroomViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.imageView);
-            nameTextView = itemView.findViewById(R.id.nameTextView);
+            this.imageView = itemView.findViewById(R.id.imageView);
+            this.nameTextView = itemView.findViewById(R.id.nameTextView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Mushroom mushroom=mushrooms.get(getAdapterPosition());
+            Bundle bundle = new Bundle();
+            bundle.putInt("DRAWABLE",mushroom.getImage());
+            bundle.putString("NAME", mushroom.getName());
+            bundle.putString("DESCRIPTION", mushroom.getDescription());
+            bundle.putString("LOCATION", mushroom.getLocation());
+            Navigation.findNavController(view).navigate(R.id.action_nav_mushidentifier_to_mushroomDetailFragment,bundle);
+
+
         }
     }
+
+
 
 
 

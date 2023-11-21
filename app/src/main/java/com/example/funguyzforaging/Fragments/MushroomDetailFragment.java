@@ -45,14 +45,15 @@ public class MushroomDetailFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param mushroom taking mushroom object as param
+
      * @return A new instance of fragment MushroomDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MushroomDetailFragment newInstance(Mushroom mushroom) {
+    public static MushroomDetailFragment newInstance(String param1, String param2) {
         MushroomDetailFragment fragment = new MushroomDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("mushroom",mushroom);
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -61,7 +62,8 @@ public class MushroomDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mushroom=getArguments().getParcelable("mushroom");
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -77,15 +79,13 @@ public class MushroomDetailFragment extends Fragment {
         TextView locationTextView = view.findViewById(R.id.locationTextViewDetail);
 
         Bundle args = getArguments();
-        if (args != null) { // Check if arguments are not null
-            Mushroom mushroom = args.getParcelable("mushroom");
-            if (mushroom != null) {
-                imageView.setImageResource(mushroom.getImage());
-                nameTextView.setText(mushroom.getName());
-                descriptionTextView.setText(mushroom.getDescription());
-                locationTextView.setText(mushroom.getLocation());
+            if (args != null) {
+                imageView.setImageResource(args.getInt("DRAWABLE"));
+                nameTextView.setText(args.getString("NAME"));
+                descriptionTextView.setText(args.getString("DESCRIPTION"));
+                locationTextView.setText(args.getString("LOCATION"));
             }
-        }
+
 
 
 
