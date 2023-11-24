@@ -15,11 +15,12 @@
         android:id="@+id/nameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
 
         android:layout_toEndOf="@id/imageView"
         android:fontFamily="@font/open_sans"
-        android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textColor="@color/charcoal"
+        android:textSize="32sp"
         tools:text="Name"></TextView>
 
 

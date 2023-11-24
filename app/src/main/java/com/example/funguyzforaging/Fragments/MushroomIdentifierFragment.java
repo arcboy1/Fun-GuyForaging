@@ -84,10 +84,10 @@ public class MushroomIdentifierFragment extends Fragment {
                             tab.setText("Edible");
                             break;
                         case 1:
-                            tab.setText("Magic");
+                            tab.setText("Poison");
                             break;
                         case 2:
-                            tab.setText("Poison");
+                            tab.setText("Magic");
                             break;
                     }
                 }

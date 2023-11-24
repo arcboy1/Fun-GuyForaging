@@ -15,6 +15,7 @@
             android:title="Mushroom Identifier" />
 
         <item
+            android:id="@+id/nav_cultivation"
             android:icon="@drawable/ic_sprout_outline"
             android:title="Grow Your Own!" />
 

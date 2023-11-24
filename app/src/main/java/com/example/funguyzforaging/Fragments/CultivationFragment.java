@@ -1,12 +1,21 @@
 package com.example.funguyzforaging.Fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.example.funguyzforaging.R;
 
@@ -16,6 +25,10 @@ import com.example.funguyzforaging.R;
  * create an instance of this fragment.
  */
 public class CultivationFragment extends Fragment {
+
+    private WebView webView;
+    private ScrollView textGuideScrollView;
+    private TextView textGuideTextView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +74,57 @@ public class CultivationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cultivation, container, false);
+        View view=inflater.inflate(R.layout.fragment_cultivation, container, false);
+
+        webView = view.findViewById(R.id.webView);
+
+        String url="<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/CfiXhWhXO9w?si=X5mu6BdVOJzFRlc9\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>";
+
+        webView.loadData(url,"text/html","utf-8");
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setBlockNetworkLoads(false);
+        if (18 < Build.VERSION.SDK_INT ){
+            webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+        }
+
+        webView.setWebChromeClient(new MyChrome());
+        webView.setWebViewClient(new WebViewClient());
+
+
+        textGuideScrollView = view.findViewById(R.id.textGuideScrollView);
+        textGuideTextView = view.findViewById(R.id.textGuideTextView);
+
+        String textGuide = requireContext().getString(R.string.growing_mushrooms_guide);
+//        textGuideTextView.setText(textGuide);
+        textGuideTextView.setText(Html.fromHtml(textGuide));
+
+
+        return view;
     }
+    public class MyChrome extends WebChromeClient {
+        View fullscreen = null;
+
+        @Override
+        public void onHideCustomView() {
+            if (fullscreen != null) {
+                ((FrameLayout) requireActivity().getWindow().getDecorView()).removeView(fullscreen);
+            }
+            webView.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void onShowCustomView(View view, CustomViewCallback callback) {
+            webView.setVisibility(View.GONE);
+
+            if (fullscreen != null) {
+                ((FrameLayout) requireActivity().getWindow().getDecorView()).removeView(fullscreen);
+            }
+
+            fullscreen = view;
+            ((FrameLayout) requireActivity().getWindow().getDecorView()).addView(fullscreen, new FrameLayout.LayoutParams(-1, -1));
+            fullscreen.setVisibility(View.VISIBLE);
+        }
+    }
+
 }
+

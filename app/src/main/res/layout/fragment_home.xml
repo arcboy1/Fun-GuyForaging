@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/lighttan">
 
     <TextView
         android:id="@+id/welcomeTitle"
@@ -12,8 +13,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/open_sans"
         android:text="Welcome to FunGuyz Foraging!"
         android:textAlignment="center"
+        android:textColor="@color/charcoal"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,22 +24,27 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTitle"
-        app:srcCompat="@drawable/funguyz" />
+        app:srcCompat="@drawable/foraging" />
 
     <TextView
         android:id="@+id/gettingStartedMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/open_sans"
         android:text="Below is a list of items that can help you get started:"
         android:textAlignment="center"
+        android:textColor="@color/charcoal"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

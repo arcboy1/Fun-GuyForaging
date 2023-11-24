@@ -21,11 +21,15 @@
     <fragment
         android:id="@+id/nav_mushdetail"
         android:name="com.example.funguyzforaging.Fragments.MushroomDetailFragment"
-        android:label="MushroomDetailFragment" />
+        android:label="" />
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.funguyzforaging.MainActivity"
-        android:label="fragment_mushroom_identifier"
+        android:label="Identify Mushrooms"
         tools:layout="@layout/fragment_mushroom_identifier" />
+    <fragment
+        android:id="@+id/nav_cultivation"
+        android:name="com.example.funguyzforaging.Fragments.CultivationFragment"
+        android:label="Grow Your Own Mushrooms!" />
 
 </navigation>
