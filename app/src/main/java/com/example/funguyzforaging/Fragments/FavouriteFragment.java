@@ -3,19 +3,32 @@ package com.example.funguyzforaging.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.funguyzforaging.DataClass.Mushroom;
 import com.example.funguyzforaging.R;
+import com.example.funguyzforaging.RecyclerView.MushroomAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FavouriteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FavouriteFragment extends Fragment {
+public class FavouriteFragment extends Fragment implements MushroomAdapter.OnFavoriteStatusChangedListener {
+
+    private RecyclerView recyclerView;
+    private MushroomAdapter adapter;
+    private List<Mushroom> favoriteMushrooms = new ArrayList<>();
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +73,39 @@ public class FavouriteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favourite, container, false);
+        View view = inflater.inflate(R.layout.fragment_favourite, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerViewFavourites);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        // Initialize the adapter with an empty list
+        adapter = new MushroomAdapter(favoriteMushrooms);
+        favoriteMushrooms.add(new Mushroom("Test Mushroom", R.drawable.bolete, "Test Description", "Test Location"));
+        adapter.notifyDataSetChanged();
+        adapter.setOnFavoriteStatusChangedListener(this);
+        recyclerView.setAdapter(adapter);
+
+        return view;
+    }
+
+    @Override
+    public void onFavoriteStatusChanged(Mushroom mushroom) {
+        Log.d("FavouriteFragment", "Favorite status changed for: " + mushroom.getName() + ", New status: " + mushroom.isFavorite());
+
+        // Check if the dataset change is triggered
+        recyclerView.getAdapter().notifyDataSetChanged();
+
+        // Check if the mushroom is now a favorite and add/remove it from the list
+        if (mushroom.isFavorite()) {
+            if (!favoriteMushrooms.contains(mushroom)) {
+                favoriteMushrooms.add(mushroom);
+                Log.d("FavouriteFragment", "Added to favorites: " + mushroom.getName());
+            }
+        } else {
+            boolean removed = favoriteMushrooms.remove(mushroom);
+            Log.d("FavouriteFragment", "Removed from favorites: " + mushroom.getName() + ", Removed: " + removed);
+        }
+
     }
 }

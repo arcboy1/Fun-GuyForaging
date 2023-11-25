@@ -94,14 +94,5 @@ public class EdibleMushFragment extends Fragment {
         return view;
     }
 
-//    private void showMushroomDetails(Mushroom mushroom) {
-//        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//        MushroomDetailFragment detailFragment = MushroomDetailFragment.newInstance(mushroom);
-//
-//        fragmentTransaction.replace(R.id.fragcontainer, detailFragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-//    }
+
 }

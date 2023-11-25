@@ -1,6 +1,7 @@
 package com.example.funguyzforaging.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,16 @@ import java.util.List;
 public class MushroomAdapter extends RecyclerView.Adapter<MushroomAdapter.MushroomViewHolder> {
 
     private List<Mushroom> mushrooms;
+    private OnFavoriteStatusChangedListener mListener;
 
-    public interface OnItemClickListener {
-        void onItemClick(Mushroom mushroom);
+    public interface OnFavoriteStatusChangedListener {
+        void onFavoriteStatusChanged(Mushroom mushroom);
     }
+
+    public void setOnFavoriteStatusChangedListener(OnFavoriteStatusChangedListener listener) {
+        this.mListener = listener;
+    }
+
 
     public MushroomAdapter(List<Mushroom> mushrooms) {
         this.mushrooms = mushrooms;
@@ -44,6 +51,7 @@ public class MushroomAdapter extends RecyclerView.Adapter<MushroomAdapter.Mushro
         holder.nameTextView.setText(mushroom.getName());
         holder.imageView.setImageResource(mushroom.getImage());
 
+
     }
 
     @Override
@@ -51,16 +59,22 @@ public class MushroomAdapter extends RecyclerView.Adapter<MushroomAdapter.Mushro
         return mushrooms.size();
     }
 
+
+
     class MushroomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         protected ImageView imageView;
         protected TextView nameTextView;
+        protected ImageView favouriteImageView;
 
 
         public MushroomViewHolder(@NonNull View itemView) {
             super(itemView);
             this.imageView = itemView.findViewById(R.id.imageView);
             this.nameTextView = itemView.findViewById(R.id.nameTextView);
+            this.favouriteImageView=itemView.findViewById(R.id.favoriteImageView);
+
             itemView.setOnClickListener(this);
+            favouriteImageView.setOnClickListener(view -> onFavoriteIconClick());
         }
 
         @Override
@@ -75,6 +89,23 @@ public class MushroomAdapter extends RecyclerView.Adapter<MushroomAdapter.Mushro
 
 
         }
+
+        private void onFavoriteIconClick() {
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                Mushroom mushroom = mushrooms.get(position);
+                mushroom.setFavorite(!mushroom.isFavorite());
+
+                if (mListener != null) {
+                    mListener.onFavoriteStatusChanged(mushroom);
+                }
+
+                Log.d("MushroomViewHolder", "Favorite icon clicked - Mushroom: " + mushroom.getName() +
+                        ", New favorite status: " + mushroom.isFavorite());
+
+            }
+        }
+
     }
 
 

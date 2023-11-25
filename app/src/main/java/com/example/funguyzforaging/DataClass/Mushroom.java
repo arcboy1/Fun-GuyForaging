@@ -8,12 +8,14 @@ public class Mushroom{
     private int image;
     private String description;
     private String location;
+    private boolean isFavorite;
 
     public Mushroom(String name, int image, String description, String location) {
         this.name = name;
         this.image = image;
         this.description = description;
         this.location = location;
+        this.isFavorite=false;
     }
 
     public Mushroom(String name, int image) {
@@ -55,5 +57,12 @@ public class Mushroom{
     public Mushroom setLocation(String location) {
         this.location = location;
         return this;
+    }
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }
