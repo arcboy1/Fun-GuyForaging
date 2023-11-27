@@ -36,6 +36,15 @@
     <fragment
         android:id="@+id/nav_favourites"
         android:name="com.example.funguyzforaging.Fragments.FavouriteFragment"
-        android:label="Favourites" />
+        android:label="Favourites" >
+        <action
+            android:id="@+id/action_nav_favourites_to_nav_mushdetail"
+            app:destination="@id/nav_mushdetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_expedition"
+        android:name="com.example.funguyzforaging.Fragments.ExpeditionFragment"
+        android:label="Book an Expedition!"
+        tools:layout="@layout/fragment_expedition" />
 
 </navigation>

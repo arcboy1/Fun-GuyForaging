@@ -20,6 +20,7 @@
             android:title="Grow Your Own!" />
 
         <item
+            android:id="@+id/nav_expedition"
             android:icon="@drawable/ic_forest_outline"
             android:title="Book Foraging Expedition" />
 

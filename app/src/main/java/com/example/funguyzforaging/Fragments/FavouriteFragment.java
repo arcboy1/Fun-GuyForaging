@@ -13,9 +13,10 @@ import android.view.ViewGroup;
 
 import com.example.funguyzforaging.DataClass.Mushroom;
 import com.example.funguyzforaging.R;
+import com.example.funguyzforaging.RecyclerView.FavMushroomAdapter;
 import com.example.funguyzforaging.RecyclerView.MushroomAdapter;
+import com.example.funguyzforaging.SharedPreferences.FavMushrooms;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,8 +27,8 @@ import java.util.List;
 public class FavouriteFragment extends Fragment implements MushroomAdapter.OnFavoriteStatusChangedListener {
 
     private RecyclerView recyclerView;
-    private MushroomAdapter adapter;
-    private List<Mushroom> favoriteMushrooms = new ArrayList<>();
+    private FavMushroomAdapter adapter;
+    private List<Mushroom> favoriteMushrooms = FavMushrooms.getInstance().getFavouriteMushroom();
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -79,9 +80,10 @@ public class FavouriteFragment extends Fragment implements MushroomAdapter.OnFav
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        // Initialize the adapter with an empty list
-        adapter = new MushroomAdapter(favoriteMushrooms);
-        favoriteMushrooms.add(new Mushroom("Test Mushroom", R.drawable.bolete, "Test Description", "Test Location"));
+
+
+        adapter = new FavMushroomAdapter(favoriteMushrooms);
+//        favoriteMushrooms.add(new Mushroom("Test Mushroom", R.drawable.bolete, "Test Description", "Test Location"));
         adapter.notifyDataSetChanged();
         adapter.setOnFavoriteStatusChangedListener(this);
         recyclerView.setAdapter(adapter);
@@ -93,10 +95,10 @@ public class FavouriteFragment extends Fragment implements MushroomAdapter.OnFav
     public void onFavoriteStatusChanged(Mushroom mushroom) {
         Log.d("FavouriteFragment", "Favorite status changed for: " + mushroom.getName() + ", New status: " + mushroom.isFavorite());
 
-        // Check if the dataset change is triggered
+        // check if the dataset change is triggered
         recyclerView.getAdapter().notifyDataSetChanged();
 
-        // Check if the mushroom is now a favorite and add/remove it from the list
+        // check if the mushroom is now a favorite and add/remove it from the list
         if (mushroom.isFavorite()) {
             if (!favoriteMushrooms.contains(mushroom)) {
                 favoriteMushrooms.add(mushroom);
