@@ -34,6 +34,7 @@
             android:title="User Uploads" />
 
         <item
+            android:id="@+id/nav_settings"
             android:icon="@drawable/ic_cog_outline"
             android:title="Settings" />
 
