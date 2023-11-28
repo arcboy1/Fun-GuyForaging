@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans"
         android:text="Name"
+        android:textAlignment="center"
         android:textColor="@color/charcoal"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
 </LinearLayout>

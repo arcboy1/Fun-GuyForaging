@@ -24,7 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_credits.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_cultivation.xml" value="0.2210144927536232" />
         <entry key="app/src/main/res/layout/fragment_edible_mush.xml" value="0.20263424518743667" />
-        <entry key="app/src/main/res/layout/fragment_expedition.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_expedition.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_favourite.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_get_started.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />

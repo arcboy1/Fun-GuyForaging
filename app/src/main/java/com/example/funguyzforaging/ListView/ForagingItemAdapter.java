@@ -28,7 +28,7 @@ public class ForagingItemAdapter extends ArrayAdapter<ForagingItem> {
         }
         TextView textView = convertView.findViewById(R.id.name);
         // set the text to display item name along with its position
-        textView.setText((position+1) + " - " + foragingItem.getName());
+        textView.setText(foragingItem.getName());
 
         return convertView;
     }
