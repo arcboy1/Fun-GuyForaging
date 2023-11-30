@@ -93,8 +93,8 @@ public class FavouriteFragment extends Fragment implements MushroomAdapter.OnFav
 
 
 
+        //adds favmushrooms to FavMushroomAdapter for recyclerview
         adapter = new FavMushroomAdapter(favoriteMushrooms);
-//        favoriteMushrooms.add(new Mushroom("Test Mushroom", R.drawable.bolete, "Test Description", "Test Location"));
         adapter.notifyDataSetChanged();
         adapter.setOnFavoriteStatusChangedListener(this);
         recyclerView.setAdapter(adapter);
@@ -102,6 +102,7 @@ public class FavouriteFragment extends Fragment implements MushroomAdapter.OnFav
         return view;
     }
 
+    //method for checking if mushroom has been favourited and adds/removes it to favouritemushroom list
     @Override
     public void onFavoriteStatusChanged(Mushroom mushroom) {
         Log.d("FavouriteFragment", "Favorite status changed for: " + mushroom.getName() + ", New status: " + mushroom.isFavorite());

@@ -26,6 +26,8 @@ import java.util.List;
  */
 public class EdibleMushFragment extends Fragment {
 
+    //populates edibleMushroom Arraylist
+
     private List<Mushroom> edibleMushrooms = new ArrayList<Mushroom>() {{
         add(new Mushroom("Black Trumpet", R.drawable.blacktrumpet, "Trumpet shaped, often brown or gray in color. Are sometimes refered to as black chanterelles. Despite their appearance, they don't have a very delicate flesh. With a rich and smoky flavour, you'll want to cook in something like a soup, sauce or seafood recipe.", "They grow around decaying material and trees. Black trumpets are most common in wooded areas near oak and beech trees. These are tough to spot because of their color, but if you see moss or other mushrooms, there’s a good chance trumpets are nearby."));
         add(new Mushroom("Bolete", R.drawable.bolete, "There are about 300 species of bolete and nearly all are edible. There are a couple that are better than others, like the king bolete, admirable bolete, and aspen bolete. They have a bulbous stem and large cap that are typically natural colors like tan and brown.\n\n It’s not uncommon to pick a bolete that is filled with worms and insects, rendering them inedible. Usually you’re able to find enough to salvage any harvest, though. Boletes are great for any cooking application, including dehydrating.", "Boletes grow in mature forests. They’re found near a variety of trees like pine, spruce, hemlock, fir, red cedar, aspen, and birch."));
@@ -80,6 +82,7 @@ public class EdibleMushFragment extends Fragment {
         }
     }
 
+    //sets up view and adds ediblemushroom list to mushroom adapter for recyclerview
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

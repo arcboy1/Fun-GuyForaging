@@ -125,7 +125,7 @@ public class UserUploadFragment extends Fragment {
 
         return view;
     }
-
+//initialize activity launchers
     private void initializeActivityLaunchers() {
         cameraLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -137,7 +137,7 @@ public class UserUploadFragment extends Fragment {
                 result -> handleGalleryResult(result.getResultCode(), result.getData())
         );
     }
-
+//takes pictures and saves it
     private void handleCameraResult(int resultCode, Intent data) {
         if (resultCode == getActivity().RESULT_OK && data != null && data.getExtras() != null) {
             Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
@@ -148,7 +148,7 @@ public class UserUploadFragment extends Fragment {
             }
         }
     }
-
+//takes pic from gallery and saves it
     private void handleGalleryResult(int resultCode, Intent data) {
         if (resultCode == getActivity().RESULT_OK && data != null && data.getData() != null) {
             Uri imageUri = data.getData();
@@ -159,17 +159,19 @@ public class UserUploadFragment extends Fragment {
         }
     }
 
+    //camera intent to open camera
     private void takePhoto() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraLauncher.launch(takePictureIntent);
     }
-
+//opens gallery with intent
     private void pickFromGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         galleryIntent.setType("image/*");
         galleryLauncher.launch(galleryIntent);
     }
 
+    //saves image as bitmap locally
     private Uri saveImageLocally(Bitmap bitmap) {
         // create file to store images
         File storageDir = requireContext().getFilesDir();
@@ -189,6 +191,7 @@ public class UserUploadFragment extends Fragment {
         return Uri.fromFile(imageFile);
     }
 
+    //method to popup image in larger dialog to view larger version when clicked.
     private void showImageDialog(Uri imageUri) {
         Dialog dialog = new Dialog(requireContext());
         dialog.setContentView(R.layout.dialog_image_fullscreen);

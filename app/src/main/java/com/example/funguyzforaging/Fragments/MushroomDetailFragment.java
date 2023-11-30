@@ -88,6 +88,7 @@ public class MushroomDetailFragment extends Fragment {
         TextView descriptionTextView = view.findViewById(R.id.descriptionTextViewDetail);
         TextView locationTextView = view.findViewById(R.id.locationTextViewDetail);
 
+        //gets bundle from mushroomadapter to get data for mushroom detail
         Bundle args = getArguments();
             if (args != null) {
                 imageView.setImageResource(args.getInt("DRAWABLE"));

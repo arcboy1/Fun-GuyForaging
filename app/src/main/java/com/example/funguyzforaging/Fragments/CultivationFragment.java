@@ -18,8 +18,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.funguyzforaging.MainActivity;
-import com.example.funguyzforaging.R;
 
+import com.example.funguyzforaging.R;
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CultivationFragment#newInstance} factory method to
@@ -88,8 +88,10 @@ public class CultivationFragment extends Fragment {
 
         webView = view.findViewById(R.id.webView);
 
+        //url for youtube video embedded
         String url="<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/CfiXhWhXO9w?si=X5mu6BdVOJzFRlc9\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>";
 
+        //sets up webview
         webView.loadData(url,"text/html","utf-8");
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBlockNetworkLoads(false);
@@ -104,6 +106,7 @@ public class CultivationFragment extends Fragment {
         textGuideScrollView = view.findViewById(R.id.textGuideScrollView);
         textGuideTextView = view.findViewById(R.id.textGuideTextView);
 
+        //set textGuide string
         String textGuide = requireContext().getString(R.string.growing_mushrooms_guide);
 //        textGuideTextView.setText(textGuide);
         textGuideTextView.setText(Html.fromHtml(textGuide));
@@ -111,6 +114,7 @@ public class CultivationFragment extends Fragment {
 
         return view;
     }
+    //created custom webchromeclient which will allow youtube video to open and close full screen mode
     public class MyChrome extends WebChromeClient {
         View fullscreen = null;
 

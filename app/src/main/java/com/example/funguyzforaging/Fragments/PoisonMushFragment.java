@@ -26,6 +26,8 @@ import java.util.List;
  */
 public class PoisonMushFragment extends Fragment {
 
+    //populates poisonmushroom list
+
     private List<Mushroom> poisonMushrooms = new ArrayList<Mushroom>() {{
         add(new Mushroom("Deadly Galerina", R.drawable.deadlygalerina, "Delicious and golden", "Forest"));
         add(new Mushroom("Death Cap", R.drawable.deathcap, "Spongy and earthy", "Woodland"));
@@ -76,7 +78,7 @@ public class PoisonMushFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    //sets up view and adds poisonmushroom list to mushroom adapter for recyclerview
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -91,14 +93,5 @@ public class PoisonMushFragment extends Fragment {
 
         return view;
     }
-//    private void showMushroomDetails(Mushroom mushroom) {
-//        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//        MushroomDetailFragment detailFragment = MushroomDetailFragment.newInstance(mushroom);
-//
-//        fragmentTransaction.replace(R.id.fragcontainer, detailFragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-//    }
+
 }

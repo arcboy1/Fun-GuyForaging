@@ -82,10 +82,12 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View view=inflater.inflate(R.layout.fragment_home, container, false);
         TextView textView=view.findViewById(R.id.textView);
         ListView foragingListView=view.findViewById(R.id.foragingListView);
         ArrayList<ForagingItem> foragingItems=new ArrayList<>();
+        //populates foragingitems list with info
         foragingItems.add(new ForagingItem("Field Guide", "A reliable field guidebook on mushrooms, preferably specific to your region."));
         foragingItems.add(new ForagingItem("Basket or Bag", "To carry the mushrooms you collect. It allows spores to disperse and helps in identification."));
         foragingItems.add(new ForagingItem("Knife", "For cutting and examining mushrooms. Ensure it's sharp and suitable for foraging."));
@@ -101,10 +103,12 @@ public class HomeFragment extends Fragment {
         foragingItems.add(new ForagingItem("Permission and Regulations", "If foraging on private land, ensure you have permission. Be aware of local regulations regarding mushroom foraging."));
 
 
+        //sets list to listview adapter
         Log.d("ForagingItems", "List contents: " + foragingItems.toString());
         ForagingItemAdapter adapter=new ForagingItemAdapter(requireContext(),foragingItems);
         foragingListView.setAdapter(adapter);
 
+        //onclick uses showitemdescription method
         foragingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -117,6 +121,7 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+    //method to create alert when listview item is clicked and show description
     private void showItemDescription(String description) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setMessage(description)

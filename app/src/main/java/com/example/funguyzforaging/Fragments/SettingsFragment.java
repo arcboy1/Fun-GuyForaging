@@ -15,7 +15,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
     private static final String TEXT_SIZE_KEY = "largerText";
 
-
+    // called when the fragment is created to set up preferences from XML resource
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -30,16 +30,16 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         }
     }
 
+    //method uses a float to toggle large or normal text size for the application
+    //applies to all text
     private void adjustTextSize(boolean isLargerTextEnabled) {
         float textSizeMultiplier = isLargerTextEnabled ? 1.5f : 1f;
 
-        // Apply the text size multiplier globally to the app's views
         ((MainActivity) requireActivity()).setTextSizeMultiplier(textSizeMultiplier);
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        // Handle other preferences if needed
     }
 
     @Override

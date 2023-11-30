@@ -74,7 +74,7 @@ public class MushroomIdentifierFragment extends Fragment {
         viewPager = view.findViewById(R.id.viewPager);
         tabLayout = view.findViewById(R.id.tabLayout);
 
-        // Set up ViewPager2 and TabLayout with your adapter
+        // Sets up ViewPager2 and TabLayout MushroomPagerAdapter
         MushroomPagerAdapter adapter = new MushroomPagerAdapter(requireActivity());
         viewPager.setAdapter(adapter);
 

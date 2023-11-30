@@ -2,6 +2,7 @@ package com.example.funguyzforaging.DataClass;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+//mushroom pojo defines what Mushroom object will be
 
 public class Mushroom{
     private String name;

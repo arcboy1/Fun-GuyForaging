@@ -5,6 +5,8 @@ import com.example.funguyzforaging.DataClass.Mushroom;
 import java.util.ArrayList;
 import java.util.List;
 
+//singleton class for fav mushrooms so that only one instance of favouriteMushrooms is created
+
 public class FavMushrooms {
     private static FavMushrooms instance;
     private ArrayList<Mushroom> favouriteMushrooms;

@@ -119,6 +119,7 @@ public class ExpeditionFragment extends Fragment {
                 sendEmail("Book Summer Expedition", "I would like to book the Summer Expedition.");
             }
         });
+        //onclick for map buttons
         mapButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,11 +153,6 @@ public class ExpeditionFragment extends Fragment {
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         emailIntent.putExtra(Intent.EXTRA_TEXT, body);
 
-//        if (emailIntent.resolveActivity(requireActivity().getPackageManager()) != null) {
-//            startActivity(emailIntent);
-//        } else {
-//            Toast.makeText(requireContext(), "No email app found", Toast.LENGTH_SHORT).show();
-//        }
         startActivity(emailIntent);
 
     }
@@ -166,12 +162,6 @@ public class ExpeditionFragment extends Fragment {
 
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, geoLocation);
 
-//        if (mapIntent.resolveActivity(requireActivity().getPackageManager()) != null) {
-//            startActivity(mapIntent);
-//        } else {
-//            // Handle the case where no map app is available
-//            Toast.makeText(requireContext(), "No map app found", Toast.LENGTH_SHORT).show();
-//        }
         startActivity(mapIntent);
     }
 }

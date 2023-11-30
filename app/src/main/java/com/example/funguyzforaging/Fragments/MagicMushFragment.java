@@ -25,6 +25,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class MagicMushFragment extends Fragment {
+    //populates magic mushroom list
     private List<Mushroom> magicMushrooms = new ArrayList<Mushroom>() {{
         add(new Mushroom("Blue Foot", R.drawable.bluefoot, "Delicious and golden", "Forest"));
         add(new Mushroom("Blue Meanies", R.drawable.bluemeanies, "Spongy and earthy", "Woodland"));
@@ -76,6 +77,7 @@ public class MagicMushFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    //sets up view and adds magicmushrooms list to mushroom adapter for recyclerview
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,14 +93,5 @@ public class MagicMushFragment extends Fragment {
 
         return view;
     }
-//    private void showMushroomDetails(Mushroom mushroom) {
-//        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//        MushroomDetailFragment detailFragment = MushroomDetailFragment.newInstance(mushroom);
-//
-//        fragmentTransaction.replace(R.id.fragcontainer, detailFragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-//    }
+
 }
