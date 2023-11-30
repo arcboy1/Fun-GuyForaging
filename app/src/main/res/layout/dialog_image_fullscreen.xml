@@ -7,10 +7,10 @@
 
     <ImageView
         android:id="@+id/fullImageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"/>
+        android:layout_width="400dp"
+        android:layout_height="600dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter" />
 
     <ImageButton
         android:id="@+id/closeButton"

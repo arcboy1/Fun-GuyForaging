@@ -2,6 +2,7 @@ package com.example.funguyzforaging.Fragments;
 
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.funguyzforaging.ImageAdapter.ImageAdapter;
 import com.example.funguyzforaging.MainActivity;
 import com.example.funguyzforaging.R;
@@ -28,8 +31,10 @@ import com.example.funguyzforaging.R;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +51,9 @@ public class UserUploadFragment extends Fragment {
 
     private ActivityResultLauncher<Intent> cameraLauncher;
     private ActivityResultLauncher<Intent> galleryLauncher;
+
+
+    private String directory = "Mushroom Pics";
 
 
 
@@ -109,6 +117,9 @@ public class UserUploadFragment extends Fragment {
         imageList = new ArrayList<>();
         imageAdapter = new ImageAdapter(requireContext(), imageList);
 
+        loadImagesFromDirectory();
+
+
         initializeActivityLaunchers();
         GridView photoGridView = view.findViewById(R.id.photoGridView);
         photoGridView.setAdapter(imageAdapter);
@@ -141,14 +152,14 @@ public class UserUploadFragment extends Fragment {
     private void handleCameraResult(int resultCode, Intent data) {
         if (resultCode == getActivity().RESULT_OK && data != null && data.getExtras() != null) {
             Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
-            Uri imageUri = saveImageLocally(imageBitmap);
+            Uri imageUri = saveImageExternally(imageBitmap);
             if (imageUri != null) {
                 imageList.add(imageUri);
                 imageAdapter.notifyDataSetChanged();
             }
         }
     }
-//takes pic from gallery and saves it
+//takes pic from gallery and saves it to imagelist
     private void handleGalleryResult(int resultCode, Intent data) {
         if (resultCode == getActivity().RESULT_OK && data != null && data.getData() != null) {
             Uri imageUri = data.getData();
@@ -171,25 +182,29 @@ public class UserUploadFragment extends Fragment {
         galleryLauncher.launch(galleryIntent);
     }
 
-    //saves image as bitmap locally
-    private Uri saveImageLocally(Bitmap bitmap) {
-        // create file to store images
-        File storageDir = requireContext().getFilesDir();
-        File imageFile = new File(storageDir, "image.jpg");
-
-        try {
-            // compress the bitmap and write it to the file
-            FileOutputStream fos = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.close();
+    //saves image to external storage using mediastore
+    private Uri saveImageExternally(Bitmap bitmap) {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator + directory);
+        values.put(MediaStore.Images.Media.DISPLAY_NAME, "testing.png");
+        values.put(MediaStore.Images.Media.MIME_TYPE, "image/png");
+        Uri imageUri = requireContext().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        if (imageUri == null) {
+            return null;
+        }
+        try (OutputStream out = requireContext().getContentResolver().openOutputStream(imageUri)) {
+            if (out != null) {
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                out.flush();
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
 
-        // return the Uri of the saved image file
-        return Uri.fromFile(imageFile);
+        return imageUri;
     }
+
 
     //method to popup image in larger dialog to view larger version when clicked.
     private void showImageDialog(Uri imageUri) {
@@ -197,14 +212,37 @@ public class UserUploadFragment extends Fragment {
         dialog.setContentView(R.layout.dialog_image_fullscreen);
 
         ImageView fullImageView = dialog.findViewById(R.id.fullImageView);
-        fullImageView.setImageURI(imageUri);
+
+        Glide.with(requireContext())
+                .load(imageUri)
+                .into(fullImageView);
 
         ImageButton closeButton = dialog.findViewById(R.id.closeButton);
         closeButton.setOnClickListener(v -> dialog.dismiss());
 
-        // Show the dialog
         dialog.show();
     }
+
+    private void loadImagesFromDirectory() {
+        File picturesDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), directory);
+
+        if (picturesDirectory.exists() && picturesDirectory.isDirectory()) {
+            File[] files = picturesDirectory.listFiles();
+            if (files != null) {
+                imageList.clear();
+
+                for (File file : files) {
+                    Uri imageUri = Uri.fromFile(file);
+                    imageList.add(imageUri);
+                }
+            }
+        }
+        imageAdapter.notifyDataSetChanged();
+    }
+
+
+
+
 
 
 }
