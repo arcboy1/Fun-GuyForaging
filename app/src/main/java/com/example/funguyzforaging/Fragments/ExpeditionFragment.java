@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.funguyzforaging.MainActivity;
 import com.example.funguyzforaging.R;
 
 /**
@@ -34,6 +35,15 @@ public class ExpeditionFragment extends Fragment {
 
     public ExpeditionFragment() {
         // Required empty public constructor
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Check if the text size multiplier has changed
+        if (getActivity() instanceof MainActivity && ((MainActivity) getActivity()).getTextSizeMultiplier() != 1.0f) {
+            ((MainActivity) getActivity()).applyTextSizeMultiplier(requireView());
+        }
     }
 
     /**

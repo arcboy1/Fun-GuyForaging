@@ -30,8 +30,14 @@
             android:title="Favourites" />
 
         <item
+            android:id="@+id/nav_userupload"
             android:icon="@drawable/ic_camera_plus_outline"
             android:title="User Uploads" />
+
+        <item
+            android:id="@+id/nav_credits"
+            android:icon="@drawable/ic_list_status"
+            android:title="Credits" />
 
         <item
             android:id="@+id/nav_settings"

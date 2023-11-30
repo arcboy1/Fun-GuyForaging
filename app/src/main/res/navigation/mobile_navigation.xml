@@ -51,5 +51,13 @@
         android:id="@+id/nav_settings"
         android:name="com.example.funguyzforaging.Fragments.SettingsFragment"
         android:label="Settings" />
+    <fragment
+        android:id="@+id/nav_userupload"
+        android:name="com.example.funguyzforaging.Fragments.UserUploadFragment"
+        android:label="User Uploads" />
+    <fragment
+        android:id="@+id/nav_credits"
+        android:name="com.example.funguyzforaging.Fragments.CreditsFragment"
+        android:label="Credits" />
 
 </navigation>

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.funguyzforaging.MainActivity;
 import com.example.funguyzforaging.R;
 import com.example.funguyzforaging.RecyclerView.MushroomAdapter;
 import com.example.funguyzforaging.ViewPager2.MushroomPagerAdapter;
@@ -36,6 +37,7 @@ public class MushroomIdentifierFragment extends Fragment {
     public MushroomIdentifierFragment() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of

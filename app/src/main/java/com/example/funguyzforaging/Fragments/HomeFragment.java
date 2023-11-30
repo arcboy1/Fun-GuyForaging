@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.funguyzforaging.ListView.ForagingItem;
 import com.example.funguyzforaging.ListView.ForagingItemAdapter;
+import com.example.funguyzforaging.MainActivity;
 import com.example.funguyzforaging.R;
 
 import java.util.ArrayList;
@@ -38,6 +39,16 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Check if the text size multiplier has changed
+        if (getActivity() instanceof MainActivity && ((MainActivity) getActivity()).getTextSizeMultiplier() != 1.0f) {
+            ((MainActivity) getActivity()).applyTextSizeMultiplier(requireView());
+        }
     }
 
     /**

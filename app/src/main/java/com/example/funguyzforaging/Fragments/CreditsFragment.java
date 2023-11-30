@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.funguyzforaging.MainActivity;
 import com.example.funguyzforaging.R;
 
 /**
@@ -28,6 +29,15 @@ public class CreditsFragment extends Fragment {
 
     public CreditsFragment() {
         // Required empty public constructor
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Check if the text size multiplier has changed
+        if (getActivity() instanceof MainActivity && ((MainActivity) getActivity()).getTextSizeMultiplier() != 1.0f) {
+            ((MainActivity) getActivity()).applyTextSizeMultiplier(requireView());
+        }
     }
 
     /**

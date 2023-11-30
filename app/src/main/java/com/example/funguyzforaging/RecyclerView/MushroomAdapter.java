@@ -37,6 +37,7 @@ public class MushroomAdapter extends RecyclerView.Adapter<MushroomAdapter.Mushro
         this.mushrooms = mushrooms;
     }
 
+
     @NonNull
     @Override
     public MushroomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
