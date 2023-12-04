@@ -11,4 +11,53 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/nav_mushidentifier"
+        android:name="com.example.funguyzforaging.Fragments.MushroomIdentifierFragment"
+        android:label="Mushroom Identifier" >
+        <action
+            android:id="@+id/action_nav_mushidentifier_to_mushroomDetailFragment"
+            app:destination="@id/nav_mushdetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_mushdetail"
+        android:name="com.example.funguyzforaging.Fragments.MushroomDetailFragment"
+        android:label="" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.funguyzforaging.MainActivity"
+        android:label="Identify Mushrooms"
+        tools:layout="@layout/fragment_mushroom_identifier" />
+    <fragment
+        android:id="@+id/nav_cultivation"
+        android:name="com.example.funguyzforaging.Fragments.CultivationFragment"
+        android:label="Grow Your Own Mushrooms!" />
+    <fragment
+        android:id="@+id/nav_favourites"
+        android:name="com.example.funguyzforaging.Fragments.FavouriteFragment"
+        android:label="Favourites" >
+        <action
+            android:id="@+id/action_nav_favourites_to_nav_mushdetail"
+            app:destination="@id/nav_mushdetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_expedition"
+        android:name="com.example.funguyzforaging.Fragments.ExpeditionFragment"
+        android:label="Book an Expedition!"
+        tools:layout="@layout/fragment_expedition" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.funguyzforaging.Fragments.SettingsFragment"
+        android:label="Settings" />
+    <fragment
+        android:id="@+id/nav_userupload"
+        android:name="com.example.funguyzforaging.Fragments.UserUploadFragment"
+        android:label="User Uploads" />
+    <fragment
+        android:id="@+id/nav_credits"
+        android:name="com.example.funguyzforaging.Fragments.CreditsFragment"
+        android:label="Credits" />
+
 </navigation>

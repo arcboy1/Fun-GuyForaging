@@ -1,14 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragments.ExpeditionFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/expedition_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@color/lighttan"
+        android:padding="16dp">
 
-</FrameLayout>
+        <!-- Expedition Item 1 -->
+
+        <TextView
+            android:id="@+id/expeditionTitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Winter Expedition"
+            android:textAlignment="center"
+            android:textColor="@color/charcoal"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/expeditionImage1"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/wintermush"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expeditionTitle1" />
+
+        <LinearLayout
+            android:id="@+id/buttonLayout1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expeditionImage1"
+            app:layout_constraintVertical_bias="0.00999999">
+
+            <Button
+                android:id="@+id/bookButton1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onBookButtonClick"
+                android:text="Book" />
+
+            <Button
+                android:id="@+id/mapButton1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onMapButtonClick"
+                android:text="Map" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/descriptionText1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Experience the magic of winter in the stunning landscapes of Whistler, British Columbia, Canada. Our Winter Foraging Expedition takes you on a journey through snow-covered forests in Whistler, where you'll discover hidden treasures beneath the frost. Join us for a unique and chilly adventure as we explore the winter wonders of nature."
+            android:textAlignment="center"
+            android:textColor="@color/charcoal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLayout1" />
+
+        <!-- Expedition Item 2 -->
+
+        <TextView
+            android:id="@+id/expeditionTitle2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Spring Expedition"
+            android:textAlignment="center"
+            android:textColor="@color/charcoal"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionText1" />
+
+        <ImageView
+            android:id="@+id/expeditionImage2"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/springmush"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expeditionTitle2" />
+
+        <LinearLayout
+            android:id="@+id/buttonLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expeditionImage2"
+            app:layout_constraintVertical_bias="0.0">
+
+            <Button
+                android:id="@+id/bookButton2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onBookButtonClick"
+                android:text="Book" />
+
+            <Button
+                android:id="@+id/mapButton2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onMapButtonClick"
+                android:text="Map" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/descriptionText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="As spring blossoms across the Okanagan Valley in British Columbia, embark on a Foraging Expedition that celebrates the renewal of nature. Traverse vibrant meadows and lush forests in the Okanagan Valley to discover the bounty of the season. Join us in this refreshing journey as we explore the diverse flora and fauna of spring in the heart of Canada."
+            android:textAlignment="center"
+            android:textColor="@color/charcoal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLayout2" />
+
+        <!-- Expedition Item 3 -->
+
+        <TextView
+            android:id="@+id/expeditionTitle3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Summer Expedition"
+            android:textAlignment="center"
+            android:textColor="@color/charcoal"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionText2" />
+
+        <ImageView
+            android:id="@+id/expeditionImage3"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/summermush"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expeditionTitle3" />
+
+        <LinearLayout
+            android:id="@+id/buttonLayout3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expeditionImage3"
+            app:layout_constraintVertical_bias="0.0">
+
+            <Button
+                android:id="@+id/bookButton3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onBookButtonClick"
+                android:text="Book" />
+
+            <Button
+                android:id="@+id/mapButton3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onMapButtonClick"
+                android:text="Map" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/descriptionText3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Escape to the warmth of summer with our Foraging Expedition in the coastal rainforests of Vancouver Island, British Columbia, Canada. Immerse yourself in the abundance of nature as we explore lush forests and scenic trails on Vancouver Island. Join us for a memorable summer adventure, discovering the natural treasures that Vancouver Island has to offer."
+            android:textAlignment="center"
+            android:textColor="@color/charcoal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLayout3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

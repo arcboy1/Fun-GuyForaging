@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="mushpurple">#A799B7</color>
+    <color name="mushdarkpurple">#533A71</color>
+    <color name="darktan">#D2B48C</color>
+    <color name="lighttan">#FDF4DC</color>
+    <color name="charcoal">#2B2D2F</color>
+
+
 </resources>

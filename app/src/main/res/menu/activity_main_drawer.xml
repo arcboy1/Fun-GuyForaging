@@ -6,7 +6,44 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home_circle_outline"
             android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/nav_mushidentifier"
+            android:icon="@drawable/ic_mushroom_outline"
+            android:title="Mushroom Identifier" />
+
+        <item
+            android:id="@+id/nav_cultivation"
+            android:icon="@drawable/ic_sprout_outline"
+            android:title="Grow Your Own!" />
+
+        <item
+            android:id="@+id/nav_expedition"
+            android:icon="@drawable/ic_forest_outline"
+            android:title="Book Foraging Expedition" />
+
+        <item
+            android:id="@+id/nav_favourites"
+            android:icon="@drawable/ic_heart_outline"
+            android:title="Favourites" />
+
+        <item
+            android:id="@+id/nav_userupload"
+            android:icon="@drawable/ic_camera_plus_outline"
+            android:title="User Uploads" />
+
+        <item
+            android:id="@+id/nav_credits"
+            android:icon="@drawable/ic_list_status"
+            android:title="Credits" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_cog_outline"
+            android:title="Settings" />
+
+
     </group>
 </menu>
