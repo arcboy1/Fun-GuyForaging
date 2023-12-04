@@ -27,13 +27,13 @@ import java.util.List;
 public class MagicMushFragment extends Fragment {
     //populates magic mushroom list
     private List<Mushroom> magicMushrooms = new ArrayList<Mushroom>() {{
-        add(new Mushroom("Blue Foot", R.drawable.bluefoot, "Delicious and golden", "Forest"));
-        add(new Mushroom("Blue Meanies", R.drawable.bluemeanies, "Spongy and earthy", "Woodland"));
-        add(new Mushroom("Blue Ringer", R.drawable.blueringer, "Commonly used in Asian cuisine", "Cultivated"));
-        add(new Mushroom("Flying Saucer", R.drawable.flyingsaucer, "Delicious and golden", "Forest"));
-        add(new Mushroom("Landslide", R.drawable.landslidemushroom, "Spongy and earthy", "Woodland"));
-        add(new Mushroom("Pajaritos", R.drawable.pajaritos, "Commonly used in Asian cuisine", "Cultivated"));
-        add(new Mushroom("Wavy Caps", R.drawable.wavycap, "Delicious and golden", "Forest"));
+        add(new Mushroom("Blue Foot", R.drawable.bluefoot, "The Blue Foot mushroom features a distinctive blue-hued stem, adding a touch of enchantment to its appearance. Found in dense forests, this magical fungus is known for its delicious and golden cap. Foragers who seek a taste of the extraordinary are drawn to the forested realms where the Blue Foot may reveal its captivating presence.", "Forest"));
+        add(new Mushroom("Blue Meanies", R.drawable.bluemeanies, "Known for their spongy and earthy texture, the Blue Meanies are a magical mushroom species that thrive in secluded woodlands. The enchanting blue tint of their caps adds an otherworldly quality to their appearance. For those seeking a connection to nature's mystical side, the woodlands provide a habitat where the Blue Meanies silently flourish.", "Woodland"));
+        add(new Mushroom("Blue Ringer", R.drawable.blueringer, "The Blue Ringer is a magical mushroom with a cap that is commonly used in Asian cuisine for its unique flavors and properties. Cultivated in controlled environments, this mystical fungus has found its way into culinary practices. Those who wish to explore the magical and gastronomic realms may encounter the Blue Ringer in cultivated spaces dedicated to its growth.", "Cultivated"));
+        add(new Mushroom("Flying Saucer", R.drawable.flyingsaucer, "The Flying Saucer mushroom, with its delicious and golden cap, adds an extraterrestrial touch to the forest floor. Nestled in the heart of lush forests, this magical fungus captures the imagination of foragers who are drawn to its unique appearance. The forest becomes a realm of wonder where the Flying Saucer manifests its magical allure.", "Forest"));
+        add(new Mushroom("Landslide", R.drawable.landslidemushroom, "The Landslide mushroom, known for its spongy and earthy characteristics, can be found thriving in quiet woodlands. Its presence adds a touch of mystery to the woodland floor, inviting foragers to explore the magical qualities of this unique fungus. Woodland habitats become enchanting realms where the Landslide mushroom reveals its magic.", "Woodland"));
+        add(new Mushroom("Pajaritos", R.drawable.pajaritos, "Pajaritos, a magical mushroom commonly used in Asian cuisine, brings its unique flavors to cultivated spaces. With its connection to culinary practices, this fungus is carefully nurtured in controlled environments. Foragers seeking the intersection of magic and cuisine may discover the enchanting Pajaritos in cultivated settings dedicated to its growth.", "Cultivated"));
+        add(new Mushroom("Wavy Caps", R.drawable.wavycap, "The Wavy Caps, known for their delicious and golden appearance, can be found flourishing in the heart of dense forests. This magical mushroom species captures the essence of enchantment with its wavy caps and alluring presence. Foragers exploring the depths of the forest may encounter the magical Wavy Caps in their quest for the extraordinary.", "Forest"));
 
 
     }};
